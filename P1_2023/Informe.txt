@@ -1,0 +1,76 @@
+AUTORES:
+-Miguel Balea Aguiar (miguel.balea@udc.es)
+-Heitor Cambre García (heitor.cambre@udc.es)	
+-Pablo Pérez Noceda (pablo.perez5@udc.es)
+
+INTRODUCCIÓN
+
+Este código en C realiza una serie de tareas relacionadas con el cálculo de la suma máxima de subconjuntos en vectores de números. Comienza inicializando la semilla para números pseudoaleatorios y define dos algoritmos ("sumSubMax1" y "sumSubMax2") para encontrar la suma máxima de subconjuntos en un vector de números. Además, implementa funciones de prueba para verificar la funcionalidad de los algoritmos y realiza un análisis de rendimiento que mide el tiempo de ejecución en función del tamaño de entrada y calcula mediante aproximación las cotas ajustadas de manera empírica. El programa muestra los resultados de las pruebas y el análisis de rendimiento en la consola. En resumen, este código permite evaluar y comparar el rendimiento de dos algoritmos de suma máxima en diferentes escenarios y tamaños de entrada.
+
+INFORMACIÓN SOBRE LA MÁQUINA:
+-SO: Ubuntu 20.04.5 LTS
+-Kernel: 5.15.0-75-generic
+-Procesador: Intel® Core™ i5-8250U CPU @ 1.60GHz × 8
+-Memoria: 8 GiB
+
+
+
+RESULTADO:
+
+(Comprobación con tabla dada)
+Secuencia		ResAS1	ResA2
+ -9  2 -5 -4  6		6	6
+  4  0  9  2  5		20	20
+ -2 -1 -9 -7 -1		0	0
+  9 -2  1 -7 -8		9	9
+ 15 -2 -5 -4 16		20	20
+  7 -5  6  7 -7		15	15
+
+
+(Comprobación de los algoritmos con vectores pseudoaleatorios)
+				  sumaSubMax1	 sumaSubMax2
+[ -6  9  9 -1  6 -3 -5  4 -7 ]             23             23
+[ -3 -2  0 -4  2  3 -3 -2 -2 ]              5              5
+[ -9 -5  4  7  6 -1 -8  9 -9 ]             17             17
+[  3  6 -7  5  9  8  2 -4  4 ]             26             26
+[  8  0 -2  8  3  2 -2  9 -6 ]             26             26
+[ -9 -4  2 -5 -7  3  8  6 -1 ]             17             17
+[ -2  7 -1 -2 -3 -8 -3 -7 -8 ]              7              7
+[ -4  4 -6  9 -1  0 -5 -3 -6 ]              9              9
+[  3  5 -7  7  2 -5 -4  7 -5 ]             10             10
+[  8  2 -9 -6  9  8 -1 -5 -5 ]             17             17
+
+
+
+(Mediciones en microsegundos y comparación entre algoritmos)
+SumaSubMax1											     
+	 n			t(n)		t(n)/n^1.8	    t(n)/n^2	        t(n)/n^2.2
+(*)    500	           301.78300            0.004184            0.001207            0.000348
+      1000	          1162.00000            0.004626            0.001162            0.000292
+      2000	          4627.00000            0.005290            0.001157            0.000253
+      4000	         18494.00000            0.006072            0.001156            0.000220
+      8000	         74067.00000            0.006983            0.001157            0.000192
+     16000	        296174.00000            0.008019            0.001157            0.000167
+     32000	       1209499.00000            0.009404            0.001181            0.000148
+
+SumaSubMax2
+	 n			t(n)		t(n)/n^0.8	    t(n)/n^1        t(n)/n^1.2
+(*)    500	             1.22700            0.008505            0.002454            0.000708
+(*)   1000	             2.32400            0.009252            0.002324            0.000584
+(*)   2000	             4.75000            0.010861            0.002375            0.000519
+(*)   4000	             9.71800            0.012762            0.002429            0.000462
+(*)   8000	            18.88200            0.014242            0.002360            0.000391
+(*)  16000	            36.51400            0.015818            0.002282            0.000329
+(*)  32000	            72.21600            0.017969            0.002257            0.000283
+(*)  64000	           142.76400            0.020402            0.002231            0.000244
+(*) 128000	           297.86300            0.024448            0.002327            0.000221
+    256000	           579.00000            0.027295            0.002262            0.000187
+  
+CONCLUSIONES:
+Los resultados muestran que el algoritmo SumaSubMax1 tiene un tiempo de ejecución y
+considerablemente mayor en comparación con SumaSubMax2 para todas las tallas de entrada evaluadas. 
+Estos resultados sugieren que SumaSubMax2 es más eficiente computacionalmente en esta tarea
+específica de encontrar la suma máxima de subsecuencias en comparación con SumaSubMax1.
+												     
+												     
+												     
