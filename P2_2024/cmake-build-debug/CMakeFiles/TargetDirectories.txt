@@ -1,0 +1,3 @@
+/home/perez/CLionProjects/P2_alg/cmake-build-debug/CMakeFiles/P2_alg.dir
+/home/perez/CLionProjects/P2_alg/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/perez/CLionProjects/P2_alg/cmake-build-debug/CMakeFiles/rebuild_cache.dir
