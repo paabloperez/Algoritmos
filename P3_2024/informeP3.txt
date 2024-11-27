@@ -1,0 +1,205 @@
+Autores:
+	-Pablo Pérez Noceda 		(pablo.perez5@udc.es)
+	-Diego Adrián Almeida Fernández (diego.almeida.fernandez@udc.es)
+	
+
+Información de la máquina:
+-SO: Ubuntu 22.04.5 LTS
+-Kernel: 6.8.0-40-generic
+-Procesador: 12th Gen Intel® Core™ i7-12650H × 16
+-Memoria: 16,0 GiB
+
+Introducción
+
+En esta práctica se comparará la complejidad computacional de diversas implementaciones de diccionarios de datos, utilizando diferentes funciones de dispersión. Concretamente, se emplearán tablas de dispersión cerrada con exploración lineal, exploración cuadrática y exploración doble. En cuanto a las funciones de dispersión, utilizaremos dos variantes denominadas dispersionA y dispersionB.
+
+En primer lugar, implementaremos las funciones encargadas de inicializar, buscar, insertar y mostrar los elementos. Para verificar su correcto funcionamiento, crearemos un conjunto de pruebas utilizando una de las funciones de dispersión proporcionadas en el enunciado.
+
+Posteriormente, utilizaremos la función leer_sinonimos proporcionada en la práctica para medir el número de colisiones generadas en los diferentes diccionarios de datos, dependiendo de la función de dispersión utilizada.
+
+Para comparar la complejidad computacional, realizaremos una medición de tiempo al buscar claves aleatorias del archivo sinonimos.txt un total de n veces. En cuanto al cálculo de los tiempos, seguimos las indicaciones proporcionadas en las transparencias teóricas. Cabe destacar los siguientes aspectos importantes: en primer lugar, los tiempos presentados están medidos en microsegundos. En segundo lugar, hemos distinguido entre los tiempos superiores a 500 ms y los inferiores; los tiempos menores de 500 ms están marcados con un asterisco en los resultados. Finalmente, es relevante mencionar que los tiempos menores a 500 ms se han calculado de manera especial, tal como se describe en nuestros apuntes teóricos. Primero, calculamos el tiempo que tarda en inicializar y procesar la función un número determinado de veces (en nuestro caso, 1000 iteraciones). Luego, medimos el tiempo necesario para inicializar únicamente el vector a utilizar. Posteriormente, restamos el tiempo de inicialización del tiempo total para obtener un valor más preciso de cuánto se ha tardado en aplicar la función durante las 1000 iteraciones. Los resultados obtenidos se presentan junto con el cálculo de las complejidades computacionales, determinadas a partir de los tiempos medidos y en función de la complejidad teórica de los algoritmos.
+
+A continuación, se presentan los resultados obtenidos en nuestro análisis:
+
+***TABLA CERRADA LINEAL
+{
+0 - (IVAN)
+1 -
+2 -
+3 -
+4 -
+5 -
+6 - (LUIS)
+7 - (ANA)
+8 - (JOSE)
+9 - (OLGA)
+10 - (ROSA)
+}
+Numero total de colisiones al insertar los elementos: 12
+Al buscar: ANA, encuentro: ANA, colisiones: 0
+Al buscar: LUIS, encuentro: LUIS, colisiones: 0
+Al buscar: JOSE, encuentro: JOSE, colisiones: 1
+Al buscar: OLGA, encuentro: OLGA, colisiones: 2
+Al buscar: ROSA, encuentro: ROSA, colisiones: 4
+Al buscar: IVAN, encuentro: IVAN, colisiones: 5
+No encuentro: CARLOS, colisiones: 6
+
+***TABLA CERRADA CUADRATICA
+{
+0 - (OLGA)
+1 -
+2 -
+3 -
+4 - (IVAN)
+5 -
+6 - (LUIS)
+7 - (ANA)
+8 - (JOSE)
+9 -
+10 - (ROSA)
+}
+Numero total de colisiones al insertar los elementos: 8
+Al buscar: ANA, encuentro: ANA, colisiones: 0
+Al buscar: LUIS, encuentro: LUIS, colisiones: 0
+Al buscar: JOSE, encuentro: JOSE, colisiones: 1
+Al buscar: OLGA, encuentro: OLGA, colisiones: 2
+Al buscar: ROSA, encuentro: ROSA, colisiones: 2
+Al buscar: IVAN, encuentro: IVAN, colisiones: 3
+No encuentro: CARLOS, colisiones: 5
+
+***TABLA CERRADA DOBLE
+Error al insertar IVAN
+{
+0 - (OLGA)
+1 - (ANA)
+2 - (ROSA)
+3 - (LUIS)
+4 - (IVAN)
+5 - (OLGA)
+6 - (LUIS)
+7 - (ANA)
+8 - (JOSE)
+9 - (JOSE)
+10 - (ROSA)
+}
+Numero total de colisiones al insertar los elementos: 19
+Al buscar: ANA, encuentro: ANA, colisiones: 0
+Al buscar: LUIS, encuentro: LUIS, colisiones: 0
+Al buscar: JOSE, encuentro: JOSE, colisiones: 1
+Al buscar: OLGA, encuentro: OLGA, colisiones: 2
+Al buscar: ROSA, encuentro: ROSA, colisiones: 2
+Al buscar: IVAN, encuentro: IVAN, colisiones: 3
+No encuentro: CARLOS, colisiones: 11
+
+Insertando con exploracion lineal y dispersionA:
+Numero total de colisiones al insertar con función de dispersión y resolución de colisiones seleccionada: 171650279
+
+Insertando con exploracion lineal y dispersionB:
+Numero total de colisiones al insertar con función de dispersión y resolución de colisiones seleccionada: 20749
+
+Insertando con exploracion cuadratica y dispersionA:
+Numero total de colisiones al insertar con función de dispersión y resolución de colisiones seleccionada: 1772628
+
+Insertando con exploracion cuadratica y dispersionB:
+Numero total de colisiones al insertar con función de dispersión y resolución de colisiones seleccionada: 16352
+
+Insertando con exploracion doble y dispersionA:
+Numero total de colisiones al insertar con función de dispersión y resolución de colisiones seleccionada: 691067
+
+Insertando con exploracion doble y dispersionB:
+Numero total de colisiones al insertar con función de dispersión y resolución de colisiones seleccionada: 21022
+
+Dispersion cerrada lineal con dispersion A
+Insertando 19062 elementos... Numero total de colisiones: 171650279
+	n			t(n)	     t(n)/n^0.95          t(n)/n^1           t(n)/n^1.1
+       125	         26012.00000       264.916636845       208.096000000       128.402278697
+       250	         48372.00000       255.006374003       193.488000000       111.393547427
+       500	         96764.00000       264.053731214       193.528000000       103.955341161
+      1000	        183538.00000       259.254315865       183.538000000        91.986902485
+      2000	        364835.00000       266.758335752       182.417500000        85.302841865
+      4000	        742237.00000       280.921907108       185.559250000        80.961138994
+      8000	       1477861.00000       289.533020347       184.732625000        75.202902503
+     16000	       2948848.00000       299.046279519       184.303000000        70.003605105
+			Cota subestimada: n ^ 0.95	Cota ajustada: n ^ 1	Cota sobrestimada: n ^ 1.1
+			
+Constante a la que tiene la dispersion cerrada lineal con dispersionA: 189,457800000
+
+Dispersion cerrada lineal con dispersion B
+Insertando 19062 elementos... Numero total de colisiones: 20749
+	n			t(n)	     t(n)/n^0.98          t(n)/n^1           t(n)/n^1.02
+(*)    125	            15.65200         0.137910720         0.125216000         0.113689832
+(*)    250	            30.24400         0.135100831         0.120976000         0.108327924
+(*)    500	            61.02000         0.138191585         0.122040000         0.107776183
+(*)   1000	           121.44300         0.139435220         0.121443000         0.105772431
+(*)   2000	           240.75000         0.140138318         0.120375000         0.103398848
+(*)   4000	           478.85700         0.141314605         0.119714250         0.101415573
+      8000	           973.00000         0.145574281         0.121625000         0.101615756
+     16000	          1903.00000         0.144344821         0.118937500         0.098002331
+			Cota subestimada: n ^ 0.98	Cota ajustada: n ^ 1	Cota sobrestimada: n ^ 1.02
+			
+Constante a la que tiene la dispersion cerrada lineal con dispersionB: 0.121290800
+
+Dispersion cerrada cuadrática con dispersion A
+Insertando 19062 elementos... Numero total de colisiones: 1772628
+	n			t(n)	     t(n)/n^0.95          t(n)/n^1           t(n)/n^1.1
+(*)    125	           233.12000         2.374187543         1.864960000         1.150743473
+(*)    250	           458.44600         2.416824860         1.833784000         1.055733198
+       500	           937.00000         2.556925573         1.874000000         1.006636297
+      1000	          1893.00000         2.673933572         1.893000000         0.948747433
+      2000	          3830.00000         2.800401348         1.915000000         0.895500389
+      4000	          7934.00000         3.002860826         1.983500000         0.865418561
+      8000	         15245.00000         2.986702332         1.905625000         0.775761894
+     16000	         29614.00000         3.003191932         1.850875000         0.703015809
+			Cota subestimada: n ^ 0.95	Cota ajustada: n ^ 1	Cota sobrestimada: n ^ 1.1
+			
+Constante a la que tiene la dispersion cerrada cuadrática con dispersionA: 1.890093000
+
+Dispersion cerrada cuadratica con dispersion B
+Insertando 19062 elementos... Numero total de colisiones: 16352
+	n			t(n)	     t(n)/n^0.98          t(n)/n^1           t(n)/n^1.02
+(*)    125	            13.83500         0.121901023         0.110680000         0.100491875
+(*)    250	            27.59200         0.123254270         0.110368000         0.098828994
+(*)    500	            54.57200         0.123588843         0.109144000         0.096387444
+(*)   1000	           108.96700         0.125110856         0.108967000         0.094906290
+(*)   2000	           218.87300         0.127403921         0.109436500         0.094002974
+(*)   4000	           429.72300         0.126814761         0.107430750         0.091009642
+      8000	           872.00000         0.130463281         0.109000000         0.091067769
+     16000	          1829.00000         0.138731832         0.114312500         0.094191415
+			Cota subestimada: n ^ 0.98	Cota ajustada: n ^ 1	Cota sobrestimada: n ^ 1.02
+			
+Constante a la que tiene la dispersion cerrada cuadrática con dispersionB: 0.109917300
+
+Dispersion cerrada doble con dispersion A
+Insertando 19062 elementos... Numero total de colisiones: 691067
+	n			t(n)	     t(n)/n^0.95          t(n)/n^1           t(n)/n^1.1
+(*)    125	           112.72900         1.148077332         0.901832000         0.556460882
+(*)    250	           225.90900         1.190941763         0.903636000         0.520234948
+       500	           500.00000         1.364421330         1.000000000         0.537159177
+      1000	           992.00000         1.401237244         0.992000000         0.497177736
+      2000	          1916.00000         1.400931849         0.958000000         0.447984007
+      4000	          3566.00000         1.349659907         0.891500000         0.388969321
+      8000	          7796.00000         1.527342170         0.974500000         0.396709723
+     16000	         15176.00000         1.539016707         0.948500000         0.360267708
+			Cota subestimada: n ^ 0.95	Cota ajustada: n ^ 1	Cota sobrestimada: n ^ 1.1
+			
+Constante a la que tiene la dispersion cerrada doble con dispersionA: 0.946246000
+
+Dispersion cerrada doble con dispersion B
+Insertando 19062 elementos... Numero total de colisiones: 21022
+	n			t(n)	     t(n)/n^0.98          t(n)/n^1           t(n)/n^1.02
+(*)    125	            16.57100         0.146008085         0.132568000         0.120365079
+(*)    250	            32.54700         0.145388399         0.130188000         0.116576807
+(*)    500	            65.42000         0.148156236         0.130840000         0.115547655
+(*)   1000	           130.47000         0.149799603         0.130470000         0.113634620
+(*)   2000	           258.73400         0.150606636         0.129367000         0.111122731
+      4000	           543.00000         0.160243727         0.135750000         0.115000211
+      8000	          1043.00000         0.156047251         0.130375000         0.108926242
+     16000	          2042.00000         0.154888137         0.127625000         0.105160673
+			Cota subestimada: n ^ 0.98	Cota ajustada: n ^ 1	Cota sobrestimada: n ^ 1.02
+			
+Constante a la que tiene la dispersion cerrada doble con dispersionB: 0.130897900
+
+Conclusión:
+	Antes de finalizar, indicaremos dos anomalías en los tiempos: una en dispersión cerrada doble con dispersiónA en n=500, y otra en dispersión cerrada lineal con dispersiónA.
+
+Para concluir nuestro estudio, podemos afirmar que el diccionario de datos con una dispersión determinada que ofrece los mejores resultados es el de dispersión cerrada cuadrática con dispersión B, seguido por el de dispersión cerrada doble con dispersión B.
