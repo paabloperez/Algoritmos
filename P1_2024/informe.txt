@@ -1,0 +1,54 @@
+Autores:
+	-Pablo Pérez Noceda 		(pablo.perez5@udc.es)
+	-Diego Adrián Almeida Fernández (diego.almeida.fernandez@udc.es)
+	
+
+Información de la máquina:
+-SO: Ubuntu 22.04.5 LTS
+-Kernel: 6.8.0-40-generic
+-Procesador: 12th Gen Intel® Core™ i7-12650H × 16
+-Memoria: 16,0 GiB
+
+
+Introducción:
+	En esta práctica nos disponemos a analizar el comportamiento de tres implementaciones diferentes (en lenguaje C) para calcular el n-ésimo término de la sucesión de fibonacci. Esto lo hemos hecho siguiento unos pasos bien definidos. En primer lugar, hemos implementado nuestras tres versiones de la función a estudiar, a continuación, diseñamos un test para comprobar que lo habíamos hecho correctamente como se puede ver en los resultados inferiormente mostrados, estos tests los hicimos inicializando unos vectores de 5 elementos de elementos conocidos y que siguen una progresión geométrica, para el test1 empiezan en 2 y se van duplicando hasta 32 y en los test 2 y 3, se van multiplicando por 10 desde 1.000 hasta 10.000.000, en ellos podemos ver que los resultados calculados con nuestro código son correctos. Una vez sabemos que las implementaciones son correctas pasamos a estudiar el tiempo que tardan en ser procesadas. Para el cálculo de tiempos hemos seguido las instrucciones propuestas en nuestras transparencias teóricas, de estos métodos tenemos que mencionar varios aspectos importantes: en primer lugar, los tiempos inferiormente mostrados están medidos en microsegundos, en segundo lugar, hemos hecho distinción entre los tiempos mayores que 500ms y los menores, los menores los podemos localizar en nuestros resultados porque salen acompañados de un asterisco, por último mencionar que los tiempos menores han sido calculados de una forma especial tal y como se nos especifica en nuestros apuntes teóricos, calculamos primero el tiempo de realizar un número determinado de veces (en nuestro caso 500) cuanto se tarda en inicializar y procesar la función, luego cuanto se tarda en simplemente inicializar el vector a utilizar y posteriormente se resta el tiempo de inicializar al de inicializar y calcular para finalmente, hallar la media de cuanto se ha tardado en aplicar la función y así obtener un tiempo más preciso. A la derecha de los tiempos, tenemos el cálculo de las complejidades computacionales calculadas a través de los tiempos y conociendo la complejidad teórica de los algoritmos. A continuación, los resultados de nuestro análisis:
+
+Test Fib1:
+1	1	2	3	5	8	13	21	34	55	89	144	233	377	610	987	1597	2584	4181	6765	
+
+Test Fib2:
+1	1	2	3	5	8	13	21	34	55	89	144	233	377	610	987	1597	2584	4181	6765	
+
+Test Fib3:
+1	1	2	3	5	8	13	21	34	55	89	144	233	377	610	987	1597	2584	4181	6765	
+
+
+Tiempos y complejidades computacionales de FIB1:
+	   n		 t	 Cota subestimada	 Cota ajustada	 Cota sobreestimada
+           2          0.0160*        0.013223 	           0.006112      0.00400000 
+           4          0.0400*        0.027321 	           0.005836      0.00250000 
+           8          0.2980*        0.139019 	           0.006344      0.00116406 
+          16         17.3940*        3.785441 	           0.007884      0.00026541 
+          32      11767.0000      557.313840 	           0.002417      0.00000274 
+Cota subestimada: t(n) / 1.1^n	Cota ajustada: t(n) / 1.618^n	Cota sobreestimada: t(n) / 2^n
+
+Tiempos y complejidades computacionales de FIB2:
+	   n		 t	 Cota subestimada	 Cota ajustada	 Cota sobreestimada
+        1000          1.4040*        0.005589 	           0.001404      0.00969849 
+       10000         13.9400*        0.008796 	           0.001394      0.01283921 
+      100000        139.4460*        0.013945 	           0.001394      0.01605431 
+     1000000       1409.0000        0.022331 	           0.001409      0.01946605 
+    10000000      14447.0000        0.036289 	           0.001445      0.02328581 
+Cota subestimada: t(n) / n^0.8	Cota ajustada: t(n) / n	Cota sobreestimada: t(n) / n * log(n)
+
+Tiempos y complejidades computacionales de FIB3:
+	   n		 t	 Cota subestimada	 Cota ajustada	 Cota sobreestimada
+        1000          0.0340*        0.012936 	           0.004922      0.00107517 
+       10000          0.0500*        0.016475 	           0.005429      0.00050000 
+      100000          0.0580*        0.017094 	           0.005038      0.00018341 
+     1000000          0.0780*        0.020985 	           0.005646      0.00007800 
+    10000000          0.0920*        0.022916 	           0.005708      0.00002909 
+Cota subestimada: t(n) / sqrt(log(n))	Cota ajustada: t(n)/ log(n)	Cota sobreestimada: t(n) / n^0.5
+
+Conclusión:
+	Para concluír nuestro estudio tenemos que hablar de varios aspectos importantes, para empezar, podemos ver que los tiempos de ejecución de las funciones son fib1>fib2>fib3 en las que obviamente a medida que aumenta el número de la sucesión de fibonacci, el tiempo también sube. Entre estas mediciones hemos decidido considerar como anómala la del fibonacci de 32 para la función fib1 la cual es ampliamente diferente al resto, tras deliberar e intentar evitarla hemos llegado a la conlusión de que ese tiempo se debe a la eficiencia del algoritmo recursivo y que 32 ya es una cifra considerablemente grande para dicha función. Tal y como se nos había comentado, la función fib3 es la mejor a nivel eficiencia con un considerable margen con respecto a la segunda. Las constantes a las que tienen las sucesiones de cada cota ajustada son: para fib1 0.0057, para fib2 0.0014 y para fib3 0.0053.
