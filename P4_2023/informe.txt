@@ -1,0 +1,51 @@
+AUTORES:
+-Miguel Balea Aguiar (miguel.balea@udc.es)
+-Heitor Cambre García (heitor.cambre@udc.es)	
+-Pablo Pérez Noceda (pablo.perez5@udc.es)
+
+INFORMACIÓN SOBRE LA MÁQUINA:
+-SO: Ubuntu 20.04.5 LTS
+-Kernel: 5.15.0-75-generic
+-Procesador: Intel® Core™ i5-8250U CPU @ 1.60GHz × 8
+-Memoria: 8 GiB
+
+Introducción:
+	En esta práctica vamos a analizar el algoritmo Dijkstra, utilizado para calcular el camino mínimo de cada vértice a los restantes en grafos ponderados. Para ello hemos aplicado el algoritmo en grafos que abarcaban desde los 10 hasta los 640 vértices, multiplicando por 2 en el proceso. Cabe destacar que para para generar aleatoriamente grafos completos no dirigidos hemos utilizado las funciones crearMatriz e iniMatriz para tener un grafo de enteros pseudoaleatorios con el que trabajar y a continuación, la función liberarMatriz para liberar ese espacio en memoria. Seguidamente presentamos las tablas del resultado de validar el correcto función de la implementación.
+	
+	Valide el correcto funcionamiento de la implementación
+
+Matriz Base
+0  1  8  4  7  
+1  0  2  6  5  
+8  2  0  9  5  
+4  6  9  0  3  
+7  5  5  3  0  
+
+Matriz Distancias
+0  1  3  4  6  
+1  0  2  5  5  
+3  2  0  7  5  
+4  5  7  0  3  
+6  5  5  3  0  
+
+Exitoso
+
+Resultados de la aplicación del algoritmo Dijkstra: 
+(La medición de tiempo se ha realizado en microsegundos, tomando como referencia la hora del sistema (en microsegundos) al inicio y al final de la función, por ello, el resultado que se visualiza en la tabla es la diferencia entre los mismos.)
+
+	 n			t(n)		t(n)/n^2.8	    t(n)/n^2.9	         t(n)/n^3.0
+(*)     10	            13.58100            0.021524            0.017097            0.013581
+(*)     20	           120.56700            0.027437            0.020335            0.015071
+        40	           741.00000            0.024213            0.016743            0.011578
+        80	          4818.00000            0.022606            0.014585            0.009410
+       160	         35745.00000            0.024081            0.014497            0.008727
+       320	        265754.00000            0.025708            0.014439            0.008110
+       640	       2195443.00000            0.030494            0.015981            0.008375
+
+Constante a la que tiende la cota ajustada: 0.021
+Cota subestimada: n^2.8
+Cota ajustada: n^2.9
+Cota sobreestimada: n^3
+
+Conclusiones:
+	Para empezar las conclusiones de esta práctica, hemos de resaltar que el asterisco que se ve a la izquierda de todo tiene un significado concreto y nos quiere indicar que en aquellas filas cuya medición de tiempo sea inferior a 500 ms hemos utilizado una técnica especial para realizar dicha medición de forma que fuese más exacta, midiendo 1000 veces el tiempo de otra forma y calculando la media. A priori, la complejidad teórica del algoritmo Dijkstra es O(n²). Al empezar a realizar los cálculos con distintos números de vértices hemos visto que empezar desde 5 vértices nos daban resultados muy bajos como para tomar en real consideración esos datos, no estamos seguros de si es una anomalía pero ha sido una curiosidad con la que nos hemos encontrado. Comparando la complejidad teórica con la que nos ha dado en nuestra práctica (complejidad empírica), nos damos cuenta de que a pesar de que en la teórica era O(n²), nuestros resultados nos indican que es O(n³).
