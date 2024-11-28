@@ -1,0 +1,95 @@
+AUTORES:
+-Miguel Balea Aguiar (miguel.balea@udc.es)
+-Heitor Cambre García (heitor.cambre@udc.es)	
+-Pablo Pérez Noceda (pablo.perez5@udc.es)
+
+INFORMACIÓN SOBRE LA MÁQUINA:
+-SO: Ubuntu 20.04.5 LTS
+-Kernel: 5.15.0-75-generic
+-Procesador: Intel® Core™ i5-8250U CPU @ 1.60GHz × 8
+-Memoria: 8 GiB
+
+Introducción:
+	En esta práctica vamos a trabajar en código C con montículos, vamos a inicializarlos y crearlos, y a parte los vamos a ordenar monticulos que han sido inicializados de forma tanto aleatoria como ascendente como descendente, posteriormente pero en las mismas tablas hemos caculado la complejidades ded dichos procesos. Estos han sido los resultados. Aviso ya de que cuando en las mediciones de tiempo, cuando el tiempo había dado previamente inferior a 500 microsegundos, hemos caluclado el tiempo de una forma más exacta.
+
+
+
+Creacion de montículos
+
+	 n			t(n)	      t(n)/n^0.8	  t(n)/n^1.0	      t(n)/n^1.2
+(*)    500	            14.30100         0.099126644         0.028602000         0.008252821
+(*)   1000	            28.82800         0.114766335         0.028828000         0.007241266
+(*)   2000	            56.97800         0.130281636         0.028489000         0.006229758
+(*)   4000	           112.56700         0.147830178         0.028141750         0.005357215
+(*)   8000	           224.77100         0.169538481         0.028096375         0.004656207
+(*)  16000	           449.96200         0.194930525         0.028122625         0.004057251
+     32000	           892.00000         0.221944748         0.027875000         0.003500942
+     64000	          1793.00000         0.256233737         0.028015625         0.003063122
+    128000	          3580.00000         0.293842798         0.027968750         0.002662141
+    256000	          8371.00000         0.394625704         0.032699219         0.002709501
+
+
+Cota subestimada: 0.8
+Cota ajustada: 1.0
+Cota sobreestimada: 1.2
+Constante a la que se tiende en la cota ajustada: 0.29
+
+Ordenacion de montículos con vector aleatorio
+
+	 n			t(n)	      t(n)/n^0.9	 t(n)/n^1.08	      t(n)/n^1.3
+(*)    500	            38.84200         0.144620074         0.047251324         0.012040391
+(*)   1000	            96.07700         0.191698817         0.055286543         0.012095378
+(*)   2000	           217.73000         0.232804449         0.059266036         0.011132156
+(*)   4000	           461.57700         0.264478375         0.059431866         0.009584427
+      8000	           973.00000         0.298766467         0.059261911         0.008205326
+     16000	          2057.00000         0.338474774         0.059263147         0.007044956
+     32000	          4326.00000         0.381462222         0.058955529         0.006017160
+     64000	          9179.00000         0.433743913         0.059172647         0.005185151
+    128000	         19155.00000         0.485057455         0.058411101         0.004394497
+    256000	         39875.00000         0.541108962         0.057517703         0.003715256
+
+Cota subestimada: 0.9
+Cota ajustada: 1.08
+Cota sobreestimada: 1.3
+Constante a la que se tiende en la cota ajustada: 0.06
+
+Ordenacion de montículos con vector ordenado descendentemente
+
+	 n			t(n)	      t(n)/n^0.9	 t(n)/n^1.07	      t(n)/n^1.3
+(*)    500	            42.47600         0.158150514         0.054985187         0.013166872
+(*)   1000	           101.96000         0.203436946         0.062868026         0.012836003
+(*)   2000	           224.62000         0.240171476         0.065969976         0.011484430
+(*)   4000	           478.68700         0.274282211         0.066964934         0.009939708
+      8000	          1011.00000         0.310434634         0.067366637         0.008525781
+     16000	          2096.00000         0.344892138         0.066524696         0.007178526
+     32000	          4357.00000         0.384195770         0.065868395         0.006060279
+     64000	          9312.00000         0.440028687         0.067054881         0.005260282
+    128000	         19409.00000         0.491489436         0.066571523         0.004452769
+    256000	         40346.00000         0.547500494         0.065914919         0.003759140
+
+Cota subestimada:0.9
+Cota ajustada: 1.07
+Cota sobreestimada: 1.3
+Constante a la que se tiende en la cota ajustada: 0.068
+
+Creacion de montículos
+
+	 n			t(n)	      t(n)/n^0.9	  t(n)/n^1.1	      t(n)/n^1.3
+(*)    500	            60.77100         0.226268125         0.065287401         0.018838025
+(*)   1000	           132.66000         0.264691499         0.066487498         0.016700905
+(*)   2000	           284.80100         0.304519083         0.066589923         0.014561379
+      4000	           609.00000         0.348950079         0.066428019         0.012645596
+      8000	          1297.00000         0.398252937         0.065999552         0.010937624
+     16000	          2756.00000         0.453493669         0.065425527         0.009438940
+     32000	          5933.00000         0.523165826         0.065706657         0.008252383
+     64000	         12680.00000         0.599179956         0.065512064         0.007162841
+    128000	         27616.00000         0.699313321         0.066562528         0.006335601
+    256000	         59364.00000         0.805577240         0.066751218         0.005531096
+    
+Cota subestimada: 0.9
+Cota ajustada: 1.1
+Cota sobreestimada: 1.3
+Constante a la que se tiende en la cota ajustada: 0.067
+
+
+
