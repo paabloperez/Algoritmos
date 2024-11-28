@@ -1,0 +1,145 @@
+Autores:
+	-Pablo Pérez Noceda 		(pablo.perez5@udc.es)
+	-Diego Adrián Almeida Fernández (diego.almeida.fernandez@udc.es)
+	
+
+Información de la máquina:
+-SO: Ubuntu 22.04.5 LTS
+-Kernel: 6.8.0-40-generic
+-Procesador: 12th Gen Intel® Core™ i7-12650H × 16
+-Memoria: 16,0 GiB
+
+
+Introducción
+    En esta práctica, nos proponemos analizar el comportamiento y los tiempos de dos algoritmos de ordenación: inserción y quicksort.
+
+En primer lugar, hemos implementado ambos algoritmos y, posteriormente, diseñado una serie de pruebas para verificar que la implementación se realizó correctamente. Estas pruebas primero imprimen el arreglo sin ordenar, luego ordenan el vector y lo presentan ya ordenado.
+
+Para las pruebas, utilizamos dos tipos de arreglos: uno con inicialización aleatoria y otro con inicialización descendente.
+
+En cuanto al cálculo de los tiempos, seguimos las instrucciones que se nos proporcionaron en las transparencias teóricas. Debemos destacar varios aspectos importantes: en primer lugar, los tiempos que se muestran a continuación están medidos en microsegundos. En segundo lugar, hemos hecho una distinción entre los tiempos superiores a 500 ms y los inferiores; los tiempos menores están marcados con un asterisco en nuestros resultados. Por último, es importante mencionar que los tiempos menores han sido calculados de manera especial, tal como se indica en nuestros apuntes teóricos. Primero, calculamos el tiempo que tarda en inicializar y procesar la función un número determinado de veces (en nuestro caso, 1000). Luego, medimos el tiempo que se requiere únicamente para inicializar el vector a utilizar. Posteriormente, restamos el tiempo de inicialización del tiempo total para, finalmente, hallar la media de cuánto se ha tardado en aplicar la función(1000 iteraciones), lo que nos permite obtener un tiempo más preciso. A la derecha de los tiempos, incluimos el cálculo de las complejidades computacionales, determinadas a partir de los tiempos y en función de la complejidad teórica de los algoritmos.
+
+A continuación, presentamos los resultados de nuestro análisis:
+
+Ordenacion por insercion con inicializacion aleatoria:
+14	9	-13	-10	16	2	-5	-1	-9	9	-1	13	6	-8	5	-5	-16	
+EL vector no esta ordenado.
+-16	-13	-10	-9	-8	-5	-5	-1	-1	2	5	6	9	9	13	14	16	
+El vector esta ordenado.
+
+Ordenacion por insercion con inicializacion descendente:
+17	16	15	14	13	12	11	10	9	8	7	6	5	4	3	2	1	
+EL vector no esta ordenado.
+1	2	3	4	5	6	7	8	9	10	11	12	13	14	15	16	17	
+El vector esta ordenado.
+
+Ordenacion por insercion con inicializacion ascendente:
+0	1	2	3	4	5	6	7	8	9	10	11	12	13	14	15	16	
+El vector esta ordenado.
+0	1	2	3	4	5	6	7	8	9	10	11	12	13	14	15	16	
+El vector esta ordenado.
+
+Ordenacion por quickort con inicializacion aleatoria:
+-2	-7	14	11	-8	-7	-13	9	7	-14	4	-11	-8	-13	-2	-5	3	
+EL vector no esta ordenado.
+-14	-13	-13	-11	-8	-8	-7	-7	-5	-2	-2	3	4	7	9	11	14	
+El vector esta ordenado.
+
+Ordenacion por quickort con inicializacion descendente:
+17	16	15	14	13	12	11	10	9	8	7	6	5	4	3	2	1	
+EL vector no esta ordenado.
+1	2	3	4	5	6	7	8	9	10	11	12	13	14	15	16	17	
+El vector esta ordenado.
+
+Ordenacion por quickort con inicializacion ascendente:
+0	1	2	3	4	5	6	7	8	9	10	11	12	13	14	15	16	
+El vector esta ordenado.
+0	1	2	3	4	5	6	7	8	9	10	11	12	13	14	15	16	
+El vector esta ordenado.
+
+Tiempos y complejidades computacionales del algoritmo:
+Ordenacion por insercion con inicializacion aleatoria:
+	n			t		t/n^1.8		   t/n^2		t/n^2.2
+(*)    500	            70.53800         0.000977861         0.000282152         0.000081412
+(*)   1000	           240.13100         0.000955979         0.000240131         0.000060318
+      2000	          1051.00000         0.001201569         0.000262750         0.000122868
+      4000	          3676.00000         0.001206890         0.000229750         0.000100242
+      8000	         15207.00000         0.001433777         0.000237609         0.000096729
+     16000	         59048.00000         0.001598782         0.000230656         0.000087610
+     32000	        235784.00000         0.001833346         0.000230258         0.000081602
+					Cota subestimada: n ^ 1.8	Cota ajustada: n ^ 2	Cota sobrestimada: n ^ 2.2
+
+Tiempos y complejidades computacionales del algoritmo:
+Ordenacion por insercion con inicializacion descendente:
+	n			t		t/n^1.8		   t/n^2		t/n^2
+(*)    500	           122.10100         0.001692674         0.000488404         0.000140924
+(*)   1000	           471.08900         0.001875439         0.000471089         0.000118332
+      2000	          1849.00000         0.002113893         0.000462250         0.000101081
+      4000	          7088.00000         0.002327104         0.000443000         0.000084332
+      8000	         30127.00000         0.002840494         0.000470734         0.000078011
+     16000	        116222.00000         0.003146823         0.000453992         0.000065497
+     32000	        467782.00000         0.003637253         0.000456818         0.000057374
+					Cota subestimada: n ^ 1.8	Cota ajustada: n ^ 1.8	Cota sobrestimada: n ^ 2
+
+Tiempos y complejidades computacionales del algoritmo:
+Ordenacion por insercion con inicializacion ascendente:
+	n			t		t/n^0.8		   t/n			t/n^1.2
+(*)    500	             0.66400         0.004602482         0.001328000         0.000383181
+(*)   1000	             0.73600         0.002930069         0.000736000         0.000184875
+(*)   2000	             2.32600         0.005318458         0.001163000         0.000254316
+(*)   4000	             7.25500         0.009527730         0.001813750         0.000345275
+(*)   8000	            12.69900         0.009578501         0.001587375         0.000263064
+(*)  16000	            22.15800         0.009599190         0.001384875         0.000199796
+(*)  32000	            43.72700         0.010880020         0.001366469         0.000171621
+					Cota subestimada: n ^ 0.8	Cota ajustada: n ^ 1	Cota sobrestimada: n ^ 1.2
+
+Tiempos y complejidades computacionales del algoritmo:
+Ordenacion por quickort con inicializacion aleatoria:
+	n			t		t/n^1.8		   t/n*log(n)		t/n^2
+(*)    500	            30.52300         0.061046000         0.009822985         0.000122092
+(*)   1000	            59.07200         0.059072000         0.008551548         0.000059072
+(*)   2000	           128.43400         0.064217000         0.008448602         0.000032108
+(*)   4000	           271.21900         0.067804750         0.008175108         0.000016951
+      8000	           606.00000         0.075750000         0.008428657         0.000009469
+     16000	          1347.00000         0.084187500         0.008696747         0.000005262
+     32000	          2859.00000         0.089343750         0.008612698         0.000002792
+					Cota subestimada: n^1.8	Cota ajustada: n * log(n)	Cota sobrestimada:n ^ 2
+
+Tiempos y complejidades computacionales del algoritmo:
+Ordenacion por quickort con inicializacion descendente:
+	n			t		t/n	 	  t/n^2			t/ n^2 * log(n)
+(*)    500	            13.51800         0.027036000         0.000054072         0.000008701
+(*)   1000	            28.84600         0.028846000         0.000028846         0.000004176
+(*)   2000	            57.29200         0.028646000         0.000014323         0.000001884
+(*)   4000	           115.51900         0.028879750         0.000007220         0.000000870
+(*)   8000	           236.23500         0.029529375         0.000003691         0.000000411
+     16000	           580.00000         0.036250000         0.000002266         0.000000234
+     32000	           909.00000         0.028406250         0.000000888         0.000000086
+					Cota subestimada: n	Cota ajustada: n ^ 2	Cota sobrestimada: n ^ 2 * log(n)
+
+Tiempos y complejidades computacionales del algoritmo:
+Ordenacion por quickort con inicializacion ascendente:
+	n			t		t/n		   t/n*log(n)		t/n^2
+(*)    500	            13.04600         0.026092000         0.004198495         0.000052184
+(*)   1000	            29.26300         0.029263000         0.004236253         0.000029263
+(*)   2000	            54.26500         0.027132500         0.003569642         0.000013566
+(*)   4000	           110.72300         0.027680750         0.003337423         0.000006920
+(*)   8000	           230.30500         0.028788125         0.003203237         0.000003599
+     16000	           887.00000         0.055437500         0.005726811         0.000003465
+     32000	          1082.00000         0.033812500         0.003259510         0.000001057
+					Cota subestimada: n	Cota ajustada: n * log(n)	Cota sobrestimada: n ^ 2
+					
+Conclusión:
+
+Conclusión:
+	Para concluír nuestro estudio tenemos que estudiarlo comparando sus tres casos (cada caso depende de la inicialización). En primer lugar, para el vector de números aleatorios, quicksort es notablemente más rápida y así lo podemos ver en dicha columna de tiempos, por otra parte, con la inicialización descendente, quicksort gana notablemente en la comparación, cabe destacar que este es el peor caso, por último, en cuanto a la inicialización ascendente, ordenado, inserción gana la batalla ya que por su funcionamiento no realiza intercambios y al acabar de recorrer el vector, se da por terminado. Para más información, se puede consultar las cotas indicadas bajo cada tabla.
+	Voy a terminar por aportar el dato de a qué constante tiende cada una:
+	Inserción:
+		Aleatoria: 0.000223
+		Descendente: 0.000443
+		Ascendente: 0.00181
+	Quickort:
+		Aleatoria: 0.00817
+		Descendente: 0.000014
+		Ascendente: 0.0033
+
